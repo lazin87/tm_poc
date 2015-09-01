@@ -26,11 +26,12 @@ echo "start";
 	
 	$str = $form['str'];
 	$int = $form['int'];
+	$photo = $form['photo'];
 	
 	//mysql_connect('localhost',$user,$password);
 	//@mysql_select_db($database) or die("Nie udalo sie wybrac bd");
 	
-	$query = "INSERT INTO IncomeData VALUES ('', '$str', '$int')";
+	$query = "INSERT INTO IncomeData VALUES ('', '$str', '$int', '$photo')";
 	mysql_query($query);
 	
 	echo "try close db";
