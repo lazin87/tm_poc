@@ -1,6 +1,8 @@
 <?php
+echo "start";
 	require "vars/var_bd.php";
 	
+	echo "try log";
 	// LOGS
 	mysql_connect('localhost',$user,$password);
 	@mysql_select_db($database) or die("Nie udalo sie wybrac bd");
@@ -13,6 +15,7 @@
 	
 	//mysql_close();
 	
+	echo "try get data";
 	
 	$str = $_POST['STR'];
 	$int = $_POST['INT'];
@@ -23,5 +26,9 @@
 	$query = "INSERT INTO IncomeData VALUES ('', '$str', '$int')";
 	mysql_query($query);
 	
+	echo "try close db";
+	
 	mysql_close();
+	
+	echo "end";
 ?>
