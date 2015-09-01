@@ -7,7 +7,14 @@ echo "start";
 	mysql_connect('localhost',$user,$password);
 	@mysql_select_db($database) or die("Nie udalo sie wybrac bd");
 	
-	foreach($_POST as $key => $value)
+	$data = json_decode(file_get_contents('php://input'), true);
+	$filecontent = file_get_contents('php://input');
+	
+	$query = "INSERT INTO logs VALUES ('', '', 'FileContent', '$filecontent')";
+	mysql_query($query);
+	
+	$form = $data["items"][0]["form"];
+	foreach($form as $key => $value)
 	{
 		$query = "INSERT INTO logs VALUES ('', '', '$key', '$value')";
 		mysql_query($query);
@@ -17,8 +24,8 @@ echo "start";
 	
 	echo "try get data";
 	
-	$str = $_POST['STR'];
-	$int = $_POST['INT'];
+	$str = $form['str'];
+	$int = $form['int'];
 	
 	//mysql_connect('localhost',$user,$password);
 	//@mysql_select_db($database) or die("Nie udalo sie wybrac bd");
